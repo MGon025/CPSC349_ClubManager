@@ -68,12 +68,18 @@ app.post('/api/clubs/create', function(req, res) {
 				dateCreated: new Date().toISOString().slice(0, 10),
 			}
 			const coll = db.collection('clubs')
+			coll.createIndex({clubName:1},{unique:true}, function(err, result){
+				if (err) {console.log(err)}
+				else {console.log(result)}
+			})
 			coll.insertOne(myObj, function(err, result) {
-				if (err) console.log(err)
+				conn.close()
+				res.type('application/json')
+				if (err) {
+					res.status(400)
+					res.json(err)
+				}
 				else {
-					conn.close()
-					// Send the data back 
-					res.type('application/json')
 					res.status(200)
 					res.json(result)					
 				}
