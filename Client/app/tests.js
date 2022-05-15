@@ -1,7 +1,12 @@
 // create a new club
 document.getElementById('createClub').addEventListener('click', function(event){
-    const cname = document.getElementById('clubName').value
-    console.log(`Creating "${cname}" club.`)
+    const newClub = {
+        clubName: document.getElementById('clubName').value,
+        dateCreated: new Date().toISOString().slice(0, 10),
+        members: [],
+        events: [],
+    }
+    console.log(`Creating "${newClub.clubName}" club.`)
 
     const xhr = new XMLHttpRequest()
     xhr.open('POST', 'http://localhost:3000/api/clubs/create')
@@ -12,7 +17,7 @@ document.getElementById('createClub').addEventListener('click', function(event){
             console.log(this.response)
         }
     }
-    xhr.send(JSON.stringify({clubName: cname}))
+    xhr.send(JSON.stringify(newClub))
 })
 
 // get club(s)

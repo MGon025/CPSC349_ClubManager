@@ -43,13 +43,10 @@ app.post('/api/clubs/create', function(req, res) {
 		else {
 			const db = conn.db(dbName)
 			const coll = db.collection('clubs')
-			const newClub = {
-				clubName: req.body.clubName,
-				dateCreated: new Date().toISOString().slice(0, 10),
-			}
+			const newClub = req.body
 
 			// make sure club name is unique
-			coll.createIndex({clubName:1},{unique:true}, function(err, result){
+			coll.createIndex({clubName:1}, {unique:true}, function(err, result){
 				if (err) {console.log(err)}
 				else {console.log(result)}
 			})
