@@ -34,14 +34,36 @@ app.use(cors())
 // 	})
 // })
 
-// Get all clubs
+// // Get all clubs
+// app.get('/api/clubs', function(req, res){
+// 	MongoClient.connect(url, function(err, conn) {
+// 		if (err) console.log(err)
+// 		else {
+// 			const db = conn.db(dbName)
+// 			const coll = db.collection('clubs')
+// 			coll.find().toArray(function(err, result) {
+// 				if (err) console.log(err)
+// 				else {
+// 					conn.close()
+// 					// Send the data back 
+// 					res.type('application/json')
+// 					res.status(200)
+// 					res.json(result)					
+// 				}
+// 			})
+// 		}
+// 	})	
+// })
+
+// Get club(s)
 app.get('/api/clubs', function(req, res){
 	MongoClient.connect(url, function(err, conn) {
 		if (err) console.log(err)
 		else {
 			const db = conn.db(dbName)
 			const coll = db.collection('clubs')
-			coll.find().toArray(function(err, result) {
+			const q = req.query.clubName ? {clubName: req.query.clubName} : {}
+			coll.find(q).toArray(function(err, result) {
 				if (err) console.log(err)
 				else {
 					conn.close()
@@ -80,6 +102,7 @@ app.post('/api/clubs/create', function(req, res) {
 					res.json(err)
 				}
 				else {
+					// Send the data back 
 					res.status(200)
 					res.json(result)					
 				}

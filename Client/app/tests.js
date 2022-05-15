@@ -15,10 +15,12 @@ document.getElementById('createClub').addEventListener('click', function(event){
     xhr.send(JSON.stringify({clubName: cname}))
 })
 
-// view all clubs
+// get club(s)
+// leave prompt empty to get all clubs
 document.getElementById('getClubs').addEventListener('click', function(event){
+    const q = prompt('clubName: ')
     const xhr = new XMLHttpRequest()
-    xhr.open('GET', 'http://localhost:3000/api/clubs')
+    xhr.open('GET', `http://localhost:3000/api/clubs?clubName=${q}`)
     xhr.responseType = 'json'
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
