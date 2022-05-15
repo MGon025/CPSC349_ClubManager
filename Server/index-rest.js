@@ -12,49 +12,6 @@ app.set('port', 3000)
 app.use(express.json())
 app.use(cors())
 
-// app.get('/api/students/:id', function(req, res){
-// 	console.log(`${req.params.id}`)
-// 	MongoClient.connect(url, function(err, conn) {
-// 		if (err) console.log(err)
-// 		else {
-// 			const db = conn.db('campus-02')
-// 			const coll = db.collection('students')
-// 			const criteria = {_id: new mongo.ObjectID(req.params.id)}
-// 			coll.find(criteria).toArray(function(err, result) {
-// 				if (err) console.log(err)
-// 				else {
-// 					conn.close()
-// 					// Send the data back 
-// 					res.type('application/json')
-// 					res.status(200)
-// 					res.json(result)					
-// 				}
-// 			})
-// 		}
-// 	})
-// })
-
-// // Get all clubs
-// app.get('/api/clubs', function(req, res){
-// 	MongoClient.connect(url, function(err, conn) {
-// 		if (err) console.log(err)
-// 		else {
-// 			const db = conn.db(dbName)
-// 			const coll = db.collection('clubs')
-// 			coll.find().toArray(function(err, result) {
-// 				if (err) console.log(err)
-// 				else {
-// 					conn.close()
-// 					// Send the data back 
-// 					res.type('application/json')
-// 					res.status(200)
-// 					res.json(result)					
-// 				}
-// 			})
-// 		}
-// 	})	
-// })
-
 // Get club(s)
 app.get('/api/clubs', function(req, res){
 	MongoClient.connect(url, function(err, conn) {
@@ -62,12 +19,13 @@ app.get('/api/clubs', function(req, res){
 		else {
 			const db = conn.db(dbName)
 			const coll = db.collection('clubs')
+
+			// find specific club name if given
 			const q = req.query.clubName ? {clubName: req.query.clubName} : {}
 			coll.find(q).toArray(function(err, result) {
 				if (err) console.log(err)
 				else {
 					conn.close()
-					// Send the data back 
 					res.type('application/json')
 					res.status(200)
 					res.json(result)					
@@ -84,17 +42,19 @@ app.post('/api/clubs/create', function(req, res) {
 		if (err) console.log(err)
 		else {
 			const db = conn.db(dbName)
-			// Prepare the JS myObj 
-			const myObj = {
+			const coll = db.collection('clubs')
+			const newClub = {
 				clubName: req.body.clubName,
 				dateCreated: new Date().toISOString().slice(0, 10),
 			}
-			const coll = db.collection('clubs')
+
+			// make sure club name is unique
 			coll.createIndex({clubName:1},{unique:true}, function(err, result){
 				if (err) {console.log(err)}
 				else {console.log(result)}
 			})
-			coll.insertOne(myObj, function(err, result) {
+
+			coll.insertOne(newClub, function(err, result) {
 				conn.close()
 				res.type('application/json')
 				if (err) {
@@ -102,34 +62,13 @@ app.post('/api/clubs/create', function(req, res) {
 					res.json(err)
 				}
 				else {
-					// Send the data back 
 					res.status(200)
-					res.json(result)					
+					res.json(result)				
 				}
 			})
 		}
 	})
 })
-
-// // Exercise #5 
-// app.put('/api/students/:id', function(req, res){
-// 	const id = req.params.id
-// 	const criteria = {_id : new mongo.ObjectID(req.params.id)}
-// 	const newValues = req.body
-// 	MongoClient.connect(url, function(err, conn) {
-// 	  if (err) throw err;
-// 	  const dbo = conn.db("campus-02");
-// 	  dbo.collection('students').updateOne(criteria, {$set: newValues}, function(err, result){
-// 		  if (err) console.log(err)
-// 		  else {
-// 			  //
-// 			  res.type('application/json')
-// 			  res.status(200)
-// 			  res.json(result)
-// 		  }
-// 	  })
-// 	})
-// })
 
 app.listen(app.get('port'), function(){
 	console.log('Express server started on http://localhost:' + app.get('port'));

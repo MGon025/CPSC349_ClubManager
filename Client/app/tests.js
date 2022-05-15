@@ -18,7 +18,7 @@ document.getElementById('createClub').addEventListener('click', function(event){
 // get club(s)
 // leave prompt empty to get all clubs
 document.getElementById('getClubs').addEventListener('click', function(event){
-    const q = prompt('clubName: ')
+    const q = prompt('clubName (leave empty for all): ')
     const xhr = new XMLHttpRequest()
     xhr.open('GET', `http://localhost:3000/api/clubs?clubName=${q}`)
     xhr.responseType = 'json'
