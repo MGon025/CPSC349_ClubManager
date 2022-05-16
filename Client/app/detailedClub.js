@@ -21,14 +21,19 @@ xhr.onreadystatechange = function() {
         var club = new Club(this.response[0])
         console.log(club)
 
-        // update club name
-        var name = document.getElementById('cname');
-        name.innerHTML += ' ' + club['clubName'];
+        // update club details
+        var details = document.getElementById('clubDetails').childNodes;
+        console.log(details);
 
-        // update date created
-        var dob = document.getElementById('dob');
+        // club name
+        details[1].innerHTML += ' ' + club['clubName'];
+
+        // date created
         var date = new Date(club['dateCreated']);
-        dob.innerHTML += ' ' + date.toISOString().slice(0, 10);
+        details[3].innerHTML += ' ' + date.toISOString().slice(0, 10);
+
+        // # of events
+        details[5].innerHTML += ' ' + String(club.eventCount);
 
         // update member list
         var peopleList = document.getElementById('people').childNodes;
