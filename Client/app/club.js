@@ -1,23 +1,45 @@
-function Club(cn) {
-    this.clubName = cn
-    this.dateCreated = new Date().toISOString().slice(0, 10)
-    this.members = []
-    this.events = []
+export class Club {
+    constructor(cn) {
+        // construct using another Club obj else do it from scratch
+        if (cn instanceof Object) {
+            this.clubName = cn.clubName
+            this.dateCreated = cn.dateCreated
+            this.members = cn.members
+            this.events = cn.events
+        }
+        else {
+            this.clubName = cn
+            this.dateCreated = new Date()
+            this.members = ['adam smith', 'john doe']
+            this.events = ['pizza party', 'study group', 'hangout']
+        }
+    }
+    get memberCount() {
+        return this.members.length
+    }
 
-    Object.defineProperty(this, 'memberCount', {
-        get: function() {return this.members.length}
-    })
-    Object.defineProperty(this, 'eventCount', {
-        get: function() {return this.events.length}
-    })
+    get eventCount() {
+        return this.events.length
+    }
+
+    addMember(p) {
+        this.members.append(p)
+    }
+
+    addEvent(e) {
+        this.events.append(e)
+    }
+
+    removeMember(p) {
+        var index = this.members.indexOf(p)
+        this.members.splice(index, index)
+    }
+
+    removeEvent(p) {
+        var index = this.events.indexOf(p)
+        this.events.splice(index, index)
+    }
 }
 
-// add Person object to club members
-Club.prototype.addMember = function(p) {
-    this.members.append(p)
-}
 
-// add Event object to club events
-Club.prototype.addEvent = function(e) {
-    this.events.append(e)
-}
+
