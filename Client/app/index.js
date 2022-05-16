@@ -17,7 +17,7 @@ xhr.onreadystatechange = function() {
             // <li class="club"><a href="/detailed-UI.html?cn=cn">Club name #1</a></li>
             // prepare list container
             var li = document.createElement('li');
-            li.class = 'club';
+            li.classList.add('club');
 
             // create link to detailed page
             var ref = document.createElement('a');
