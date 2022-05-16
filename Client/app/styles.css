@@ -11,9 +11,10 @@ body {
 h1 {
 	font-size: 36px;
 	font-weight: bold;
-	margin: 10px auto;
 	color: black;
 	text-align: center;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ddd;
 }
 
 ul {
@@ -23,12 +24,16 @@ ul {
 
 li a {
 	text-decoration: none;
-	color: black;
+	color: #ffffff;
+	background-color: #6a63f5;
+	padding: 7px 12px;
+	border: 1px solid #ddd;
+	border-radius: 12px;
 }
 
 ul li {
 	list-style-type: none;
-	font-size: 40px;
+	font-size: 36px;
 	margin-top: 20px;
 }
 
@@ -38,11 +43,11 @@ ol li {
 }
 
 a:hover {
-	background-color: #ddd;
+	background-color: #5249f3;
 }
 
 nav a:hover {
-	background-color: #ddd;
+	background-color: #5b5b5b;
 }
 
 img {
@@ -77,8 +82,20 @@ img {
 	flex: 1;
 }
 
+.profile {
+	text-align: right;
+}
+
+.active {
+	background-color: #6a63f5;
+}
+
+.active:hover {
+	background-color: #5249f3;
+}
+
 #pageTitle {
-	margin: 15px 0px;
+	margin: 5px 0px;
 }
 
 #listOfClubs {
