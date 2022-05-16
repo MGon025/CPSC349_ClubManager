@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Tests</title>
-    </head>
-    <body>
-        <label>Club Name:</label>
-        <input id='clubName' type='text'>
-        <br>
-        <button id='createClub'>Create Club</button>
-        <br><br>
-        <button id='getClubs'>Get Clubs</button>
-        <br><br>
-        <button id='getEvents'>Get Details</button>
-    </body>
-    <script type="module" src='/tests.js' charset="utf-8"></script>
+	<head>
+		<meta charset="utf-8" />
+		<title>Tests</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+
+	<body>
+		<!-- nav bar -->
+		<nav class="nav">
+			<a href="/index.html">Summary</a>
+			<a class="active" href="/tests.html">Make Club</a>
+			<a class="profile">Profile</a>
+		</nav>
+
+		<!-- title -->
+		<h1 id="pageTitle">Club Formation and Details</h1>
+
+		<!-- form to create club -->
+		<div class="form">
+			<div class="inputArea">
+				<label>Club Name:</label>
+				<input id="clubName" type="text" />
+			</div>
+
+			<button id="createClub">Create Club</button>
+			<button id="getClubs">Get Clubs</button>
+			<button id="getEvents">Get Details</button>
+		</div>
+	</body>
+	<script type="module" src="/tests.js" charset="utf-8"></script>
 </html>
