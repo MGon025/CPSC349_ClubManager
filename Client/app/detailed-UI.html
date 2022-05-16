@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- this is the detailed view page that is populated with a clubs data -->
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -12,28 +13,24 @@
 			<a class="profile">Profile</a>
 		</nav>
 
+		<!-- title -->
 		<h1 id="pageTitle">Detailed View</h1>
 
+		<!-- 2 columns for details and people -->
 		<div class="row">
 			<div class="col">
+				<!-- column 1 -->
 				<ul id="clubDetails">
 					<li class="">Club Name:</li>
 					<li class="">Date created:</li>
 					<li class="">Number of events:</li>
 				</ul>
 
+				<!-- column 2 -->
 				<ul id="people">
 					<li>People (#)</li>
 					<ol>
-						<li>Person 1<span>Role: </span></li>
-						<li>Person 2</li>
-						<li>Person 3</li>
-						<li>Person 4</li>
-						<li>Person 5</li>
-						<li>Person 6</li>
-						<li>Person 7</li>
-						<li>Person 8</li>
-						<li>Person 9</li>
+						<!-- where people will get filled with dom-manipulation -->
 					</ol>
 				</ul>
 			</div>
@@ -41,5 +38,3 @@
 	</body>
 	<script type="module" src="/detailedClub.js" charset="utf-8"></script>
 </html>
-
-<!-- we should start with club name, date created, # of members, and # of events -->
