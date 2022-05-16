@@ -1,29 +1,44 @@
 <!DOCTYPE html>
+<!-- This is the html for the "Summary view" where the user can 
+	look at all of the clubs on campus and click whichever one they 
+	want to see a more detailed view of -->
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<title>Club Manager</title>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
+
 	<body>
+		<!-- nav bar -->
 		<nav class="nav">
 			<a id="link" href="/index.html">Summary</a>
 			<a id="link" href="/detailed-UI.html">Detailed</a>
 		</nav>
 
+		<!-- title -->
 		<h1 id="pageTitle">Summary View</h1>
 
-		<div>
-			<div class="row">
-				<div class="col">
-					<div class="day">monday</div>
-					<div class="day">tuesday</div>
-					<div class="day">wednesday</div>
-					<div class="day">thursday</div>
-					<div class="day">friday</div>
-					<div class="day">saturday</div>
-					<div class="day">sunday</div>
-				</div>
+		<!-- create two columns -->
+		<div class="row">
+			<div class="col">
+				<!-- column 1 is the list of clubs -->
+				<ul id="listOfClubs">
+					<li class="club"><a href="/detailed-UI.html">Club name #1</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #2</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #3</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #4</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #5</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #6</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #7</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #8</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #9</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #10</a></li>
+					<li class="club"><a href="/detailed-UI.html">Club name #11</a></li>
+				</ul>
+
+				<!-- column 2 is the map of the school -->
+				<img width="600px" height="776px" src="/csuf_map.png" />
 			</div>
 		</div>
 	</body>

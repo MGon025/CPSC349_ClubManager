@@ -1,3 +1,7 @@
+* {
+	/* border: 1px solid red; */
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -7,13 +11,45 @@ body {
 h1 {
 	font-size: 36px;
 	font-weight: bold;
-	margin: auto;
+	margin: 10px auto;
 	color: black;
 	text-align: center;
 }
 
+ul {
+	height: 600px;
+	width: 300px;
+}
+
+li a {
+	text-decoration: none;
+	color: black;
+}
+
+ul li {
+	list-style-type: none;
+	font-size: 40px;
+	margin-top: 20px;
+}
+
+ol li {
+	list-style-type: bullet;
+	font-size: 20px;
+}
+
+a:hover {
+	background-color: #ddd;
+}
+
+nav a:hover {
+	background-color: #ddd;
+}
+
+img {
+	margin-right: 11%;
+}
+
 .nav {
-	border: 1px solid red;
 	background-color: #333;
 	overflow: hidden;
 }
@@ -25,10 +61,6 @@ h1 {
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 17px;
-}
-
-nav a:hover {
-	background-color: #ddd;
 }
 
 .row {
@@ -45,16 +77,25 @@ nav a:hover {
 	flex: 1;
 }
 
-.day {
-	background-color: #c0c0c0;
-	height: 500px;
-	margin: 0px 0px;
-	border: 1px solid red;
+#pageTitle {
+	margin: 15px 0px;
 }
 
-#link {
-	display: absolute;
-	top: 10px;
-	left: 10px;
-	color: white;
+#listOfClubs {
+	display: table;
+	margin: 0 auto;
+}
+
+#clubDetails {
+	display: table;
+	margin: 0 auto;
+}
+
+#people {
+	margin-top: 0px;
+	margin-right: 25%;
+}
+
+#numPeople {
+	diplay: inline;
 }
