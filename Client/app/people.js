@@ -1,9 +1,11 @@
-function Person(fn, ln, dob) {
-    this.fistName = fn
-    this.lastName = ln
-    this.dob = dob
-
-    Object.defineProperty(this, 'name', {
-        get: function() {return `${this.firstName} ${this.lastName}`}
-    })
+class Person {
+    constructor(fn, ln, dob) {
+        this.fistName = fn
+        this.lastName = ln
+        this.dob = dob
+    }
+    get name() {
+        return `${this.firstName} ${this.lastName}`
+    }
 }
+
