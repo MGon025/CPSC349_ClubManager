@@ -1,4 +1,4 @@
-import {Club} from './club.js'
+import {Club} from '../club.js'
 
 // create a new club
 document.getElementById('createClub').addEventListener('click', function(event){
